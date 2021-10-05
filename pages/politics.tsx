@@ -28,7 +28,7 @@ const Home: NextPage = (props: HomeProps) => {
 
 
       <Layout>
-        <h1>See what is happening around the world</h1>
+        <h1>Politics</h1>
         <MainArticles>
           {
             props.articles.results.map((article, index) => {
@@ -70,7 +70,7 @@ const Home: NextPage = (props: HomeProps) => {
 
 export async function getServerSideProps() {
   const articles = await Client().query(
-    Prismic.Predicates.at("document.type", "article")
+    Prismic.Predicates.at("document.tag", ["politics"])
   )
   const trending = await Client().query(
     Prismic.Predicates.at("document.type", "trending")
